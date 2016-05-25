@@ -15,7 +15,7 @@ def main():
 
 def selectPlayer():
     print "Seleccione el jugador que va primero: "
-    print "1. X   ||   2. O"
+    print "1. Maquina   ||   2. Humano"
     player = raw_input("Jugador: ")
     if player == '1':
         return 'X'
@@ -25,7 +25,7 @@ def selectPlayer():
 def selectDifficulty(state, game):
     print "Seleccione dificultad: "
     print "1. Facil   ||   2. Medio   ||   3. Dificil"
-    dificultad = raw_input("Jugador: ")
+    dificultad = raw_input("Dificultad: ")
     if dificultad == '1':
         return heu.heuristicRT
     else:

@@ -30,18 +30,14 @@ def heuristicN(state):
 	return coste(state, 'X') -  coste(state, 'O')
 
 def coste(state, player):
-	"""If X wins with this move, return 1; if O return -1; else return 0"""
 	cost = 0
-	maxi = 0
 	list_legalmoves = legal_moves(state)
 	for move in list_legalmoves:
 		cost += k_in_row(state.board, move, player, (0, 1)) #arriba
 		cost += k_in_row(state.board, move, player, (1, 0)) #derecha
 		cost += k_in_row(state.board, move, player, (1, 1)) #arriba-der
 		cost += k_in_row(state.board, move, player, (1, -1)) #abajo-der
-		if cost > maxi:
-			maxi = cost
-	return maxi
+	return cost
 
 def legal_moves(state):
         "Legal moves are any square not yet taken."
