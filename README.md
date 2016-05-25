@@ -99,7 +99,7 @@ def selectDifficulty(state, game):
         else:
             return heu.heuristicN
 ```
-Seleccionamos el jugador que jugara primero. Poniendo como valor por defecto a la maquina.
+Seleccionamos el jugador que jugara primero. 
 
 ```python
 def selectPlayer():
@@ -112,7 +112,7 @@ def selectPlayer():
         return 'O'
 
 ```
-Modificamos el constructor del conecta 4 para asi pasarle el jugador escogido.
+Modificamos el constructor del conecta 4 para asi pasarle el jugador escogido. Poniendo como valor por defecto a la maquina.
 ``` python
 """Conecta 4"""
 def __init__(self, h=7, v=6, k=4, player='X'):
