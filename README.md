@@ -100,17 +100,6 @@ def selectDifficulty(state, game):
             return heu.heuristicN
 ```
 Seleccionamos el jugador que jugara primero. Poniendo como valor por defecto a la maquina.
-``` python
-"""Conecta 4"""
-def __init__(self, h=7, v=6, k=4, player='X'):
-        TicTacToe.__init__(self, h, v, k, player)
-"""Tic Tac Toe"""
-def __init__(self, h=3, v=3, k=3, player='X'):
-        update(self, h=h, v=v, k=k)
-        moves = [(x, y) for x in range(1, h+1)
-                 for y in range(1, v+1)]
-        self.initial = Struct(to_move=player, utility=0, board={}, moves=moves)
-```
 
 ```python
 def selectPlayer():
@@ -124,6 +113,17 @@ def selectPlayer():
 
 ```
 Modificamos el constructor del conecta 4 para asi pasarle el jugador escogido.
+``` python
+"""Conecta 4"""
+def __init__(self, h=7, v=6, k=4, player='X'):
+        TicTacToe.__init__(self, h, v, k, player)
+"""Tic Tac Toe"""
+def __init__(self, h=3, v=3, k=3, player='X'):
+        update(self, h=h, v=v, k=k)
+        moves = [(x, y) for x in range(1, h+1)
+                 for y in range(1, v+1)]
+        self.initial = Struct(to_move=player, utility=0, board={}, moves=moves)
+```
 ```python
 def humanVsMachine():
     player = selectPlayer()
