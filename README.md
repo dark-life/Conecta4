@@ -154,3 +154,67 @@ def humanVsMachine():
             print "Final de la partida"
             break        
 ```
+Entre otras cosas podemos jugar contra otro humano.
+```python
+def humanVsHuman():
+    player = selectPlayer()
+    game = games.ConnectFour(h=7, v=6, k=4, player=player)
+    state = game.initial
+    while True:
+        print "Jugador a mover:", game.to_move(state)
+        game.display(state)
+        if player == 'O':
+            col_str = raw_input("Movimiento: ")
+            coor = int(str(col_str).strip())
+            x = coor
+            y = -1
+            legal_moves = game.legal_moves(state)
+            for lm in legal_moves:
+                if lm[0] == x:
+                    y = lm[1]
+            state = game.make_move((x, y), state)
+            player = 'X'
+        else:
+            col_str = raw_input("Movimiento: ")
+            coor = int(str(col_str).strip())
+            x = coor
+            y = -1
+            legal_moves = game.legal_moves(state)
+            for lm in legal_moves:
+                if lm[0] == x:
+                    y = lm[1]
+            state = game.make_move((x, y), state)
+            player = 'O'
+        print "-------------------"
+        if game.terminal_test(state):
+            game.display(state)
+            print "Final de la partida"
+            break
+```
+O ver como juega la maquina "aleatoria" contra la maquina que "piensa"
+
+```python
+def machineVsMachine():
+    game = games.ConnectFour(h=7, v=6, k=4)
+    state = game.initial
+    player = 'X'
+    while True:
+        print "Jugador a mover:", game.to_move(state)
+        game.display(state)
+
+        if player == 'O':
+            print "Don't Think, Just ACT"
+            move = games.alphabeta_search(state, game, d=2, cutoff_test=None, eval_fn=heu.heuristicRIA)
+            state = game.make_move(move, state)
+            player = 'X'
+        else:
+            print "Thinking..."
+            move = games.alphabeta_search(state, game, d=3, cutoff_test=None, eval_fn=heu.heuristicN)
+            state = game.make_move(move, state)
+            player = 'O'
+        print "-------------------"
+        if game.terminal_test(state):
+            game.display(state)
+            print "Final de la partida"
+            break
+```
