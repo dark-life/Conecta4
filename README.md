@@ -99,6 +99,8 @@ def selectDifficulty(state, game):
         else:
             return heu.heuristicN
 ```
+
+###Seleccionar jugador
 Seleccionamos el jugador que jugara primero. 
 
 ```python
